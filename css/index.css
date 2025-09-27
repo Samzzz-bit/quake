@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-y: hidden; 
+  overflow-x: hidden; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;     
+}
+
+.container::-webkit-scrollbar {
+  display: none; 
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+.logo {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+.logo img {
+  height: 40px; 
+}
+
+.brand-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: white; 
+  letter-spacing: 1px;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+.navbar a:hover, .navbar a.active {
+  color: #ff007f;
+}
+
+.navbar .btn {
+  background: linear-gradient(45deg, #ff007f, #8e2de2);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.navbar .btn:hover {
+  background: linear-gradient(45deg, #cc0066, #6b1bb5);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(142, 45, 226, 0.6);
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  text-align: center;
+  padding: 80px 20px 20px;
+}
+.section:nth-child(2) { background: linear-gradient(135deg, #1a0033, #33001a); }
+.section:nth-child(3) { background: linear-gradient(135deg, #220044, #660033); }
+.section:nth-child(4) { background: linear-gradient(135deg, #110033, #440055); }
+.section:nth-child(5) { background: linear-gradient(135deg, #000, #111); }
+
+.content {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+.content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content h1 {
+  font-size: 3.5rem;
+  line-height: 1.3;
+  background: linear-gradient(45deg, #ff007f, #8e2de2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #ff007f, #8e2de2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.content p {
+  max-width: 700px;
+  margin: 20px auto;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+.content a {
+  text-decoration: none;
+  color: #ccc;
+  transition: 0.3s;
+}
+.content a:hover {
+  color: #ff007f;
+}
+.btn.big {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 40px;
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+.btn.small {
+  display: inline-block;
+  margin-top: 20px;
+  width: 150px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+.big{
+  background: linear-gradient(45deg, #ff007f, #8e2de2);
+}
+.small{
+  background: #000;
+}
+.btn.big:hover {
+  opacity: 0.9;
+  background: linear-gradient(45deg, #cc0066, #6b1bb5);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(142, 45, 226, 0.6);
+}
+.btn.small:hover {
+  opacity: 0.9;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(142, 45, 226, 0.6);
+}
+
+.custom-scrollbar {
+  position: fixed;
+  top: 0;
+  right: -10px;
+  width: 6px;
+  height: 0;
+  background: linear-gradient(180deg, #ff007f, #8e2de2);
+  border-radius: 10px;
+  transform: translateX(20px);
+  opacity: 0;
+  transition: all 0.5s ease;
+  z-index: 999;
+}
+.custom-scrollbar.active {
+  right: 0;
+  transform: translateX(0);
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(255,0,127,0.7);
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  margin-top: 30px;
+}
+
+.btn-group .btn.big .btn.small {
+  flex: 1;
+  max-width: 200px; 
+  text-align: center;
+}
+
+.logoicon {
+  width: 60px;
+}
